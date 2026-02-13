@@ -1,0 +1,76 @@
+@import "tailwindcss";
+
+@theme {
+    --scissors: hsl(39, 89%, 49%);
+    --scissors-hover: hsl(28, 76%, 44%);
+    --paper: hsl(230, 89%, 62%);
+    --paper-hover: hsl(229, 64%, 46%);
+    --rock: hsl(349, 71%, 52%);
+    --rock-hover: hsl(347, 75%, 35%);
+    --spock: hsl(261, 73%, 60%);
+    --spock-hover: hsl(261, 51%, 44%);
+    --lizard: hsl(189, 59%, 53%);
+    --lizard-hover: hsl(194, 58%, 42%);
+
+    --Navy-900: hsl(229, 25%, 31%);
+    --Gray-600: hsl(246, 11%, 37%);
+    
+    --weight-bold: 700;
+    --weight-regular: 600;
+    
+    --font-family: 'Barlow Semi Condensed', sans-serif;
+
+    --bg-gradient-1: hsl(214, 47%, 23%);
+    --bg-gradient-2: hsl(237, 48%, 15%);
+    --bg-gradient: radial-gradient(ellipse at top, var(--bg-gradient-1), var(--bg-gradient-2));
+}
+
+.bg-main {
+    background: var(--bg-gradient);
+}
+
+@keyframes winner-ring-pulse {
+    0% {
+        box-shadow: 
+            0 0 0 4.5rem rgba(255, 255, 255, 0.05);
+    }
+    60% {
+        box-shadow: 
+            0 0 0 4.5rem rgba(255, 255, 255, 0.05),
+            0 0 0 8.5rem rgba(255, 255, 255, 0.1);
+    }
+    100% {
+        box-shadow: 
+            0 0 0 4.5rem rgba(255, 255, 255, 0.05),
+            0 0 0 8.5rem rgba(255, 255, 255, 0.1), 
+            0 0 0 12.5rem rgba(255, 255, 255, 0.15);
+    }
+}
+
+.winner-rings {
+    animation: winner-ring-pulse 1.5s cubic-bezier(.7,0,.3,1) forwards;
+    /* animation: winner-ring-pulse 1s cubic-bezier(.7,0,.3,1) forwards; */
+}
+
+@media (max-width: 768px) {
+    @keyframes winner-ring-pulse-mobile {
+        0% {
+            box-shadow: 
+                0 0 0 2rem rgba(255, 255, 255, 0.05);
+        }
+        60% {
+            box-shadow: 
+                0 0 0 2rem rgba(255, 255, 255, 0.05),
+                0 0 0 3.5rem rgba(255, 255, 255, 0.08);
+        }
+        100% {
+            box-shadow: 
+                0 0 0 2rem rgba(255, 255, 255, 0.05),
+                0 0 0 3.5rem rgba(255, 255, 255, 0.08),
+                0 0 0 5rem rgba(255, 255, 255, 0.1);
+        }
+    }
+    .winner-rings {
+        animation: winner-ring-pulse-mobile 1.5s cubic-bezier(.7,0,.3,1) forwards;
+    }
+}
