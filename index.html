@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@400;600;700&display=swap"
+    rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="stylesheet" href="./src/output.css">
+  <title>Rock, Paper, Scissors</title>
+</head>
+
+<body
+  class="font-(--font-family) bg-main text-white flex justify-center items-center gap-4 flex-col h-screen w-screen py-6 px-4 overflow-hidden">
+  <div class="head h-max md:p-6 px-6 py-4 w-full max-w-2xl flex justify-between items-center border-4 border-gray-500 rounded-2xl">
+    <img src="./images/logo.svg" alt="" class="h-20 md:h-26">
+    <div
+      class="scrore-board flex flex-col justify-center h-full md:h-auto md:w-auto text-center md:py-4 md:px-8 p-4 bg-white rounded-lg uppercase font-(--weight-bold)">
+      <span class="md:text-xl font-(--weight-regular) text-(--paper) tracking-widest text-sm">Score</span>
+      <span class="text-(--Gray-600) text-4xl md:text-5xl tracking-tighter score-text">0</span>
+    </div>
+  </div>
+  <div class="main-game-pannel h-full w-full flex justify-center items-start pt-12">
+    <div class="game-buttons relative md:h-112 h-72 w-[90%] max-w-md md:max-w-132 block">
+      <img src="./images/bg-triangle.svg" alt="" class="absolute h-auto w-[75%] md:top-1/5 left-1/2 top-1/5 -translate-x-1/2 md:scale-100">
+
+      <button class="choice-btn group cursor-pointer md:h-48 md:w-48 h-28 w-28 md:p-6 p-4 rounded-full bg-(--paper) transition-all duration-300 hover:translate-y-1 
+        shadow-[0_7px_var(--paper-hover)] hover:shadow-[0_0_var(--paper-hover)]
+        absolute top-0 left-0" value="paper">
+        <div class="h-full w-full pointer-events-none bg-gray-100 rounded-full flex justify-center items-center shadow-[inset_0_7px_rgba(0,0,0,0.1)] group-hover:shadow-[inset_0_0px_rgba(0,0,0,0.1)]
+            transition-all duration-300">
+          <img src="./images/icon-paper.svg" alt="" class="h-1/2">
+        </div>
+      </button>
+
+      <button class="choice-btn group cursor-pointer md:h-48 md:w-48 h-28 w-28 md:p-6 p-4 rounded-full bg-(--scissors) transition-all duration-300 hover:translate-y-1 
+        shadow-[0_7px_var(--scissors-hover)] hover:shadow-[0_0_var(--scissors-hover)]
+        absolute top-0 right-0" value="scissors">
+        <div class="h-full w-full pointer-events-none bg-gray-100 rounded-full flex justify-center items-center shadow-[inset_0_7px_rgba(0,0,0,0.1)] group-hover:shadow-[inset_0_0px_rgba(0,0,0,0.1)]
+          transition-all duration-300">
+          <img src="./images/icon-scissors.svg" alt="" class="h-1/2">
+        </div>
+      </button>
+
+      <button class="choice-btn group  cursor-pointer md:h-48 md:w-48 h-28 w-28 md:p-6 p-4 rounded-full bg-(--rock) tansition-all duration-300 hover:translate-y-1 
+        shadow-[0_7px_var(--rock-hover)] hover:shadow-[0_0_var(--rock-hover)]
+        absolute bottom-0 left-1/2 -translate-x-1/2" value="rock">
+        <div class="h-full w-full pointer-events-none bg-gray-100 rounded-full flex justify-center items-center shadow-[inset_0_7px_rgba(0,0,0,0.1)] group-hover:shadow-[inset_0_0px_rgba(0,0,0,0.1)]
+          transition-all duration-300">
+          <img src="./images/icon-rock.svg" alt="" class="h-1/2">
+        </div>
+      </button>
+    </div>
+
+    <div class="result-box gap-16 flex-wrap hidden justify-center whitespace-nowrap">
+      <div class="col-left sm:w-auto w-34 flex flex-col-reverse md:flex-col place-items-center gap-8 order-1">
+        <h1 class="md:text-xl font-(--weight-regular) uppercase">You Picked</h1>
+        <div class="user-move md:h-54 md:w-54 h-24 w-24 bg-(--Gray-600) rounded-full relative"></div>
+      </div>
+
+      <div class="result-text uppercase flex-col items-center justify-center gap-4 hidden order-3 md:order-2">
+        <h1 class="text-5xl font-(--weight-bold)"></h1>
+        <button
+          class="play-again-btn py-4 px-16 hover:text-(--rock-hover) text-xl tracking-wider font-(--weight-regular) cursor-pointer bg-gray-100 rounded-lg text-(--Navy-900) uppercase hover:scale-110 hover:brightness-110 transition-all duration-300">play
+          Again</button>
+      </div>
+
+      <div
+        class="col-right sm:w-auto w-34 flex flex-col-reverse md:flex-col place-items-center gap-8 order-2 md:order-3">
+        <h1 class="md:text-xl font-(--weight-regular) uppercase">The House Picked</h1>
+        <div class="home-move md:h-54 md:w-54 h-24 w-24 bg-(--Gray-600) rounded-full relative animate-pulse"></div>
+      </div>
+
+      <!-- You Win
+      You Lose
+      Play Again -->
+    </div>
+  </div>
+
+  <button
+    class="bonus-link fixed bottom-6 left-6 border-2 py-2 px-8 uppercase rounded-lg hover:text-gray-500 hover:bg-white hover:border-white font-(--weight-regular) cursor-pointer 
+    transition-all duration-300 hover:scale-110 mr-4 disabled:hover:text-white disabled:hover:bg-transparent disabled:cursor-not-allowed disabled:scale-100">
+    Bonus Game
+  </button>
+  <button
+    class="open-rules-btn fixed bottom-6 right-6 border-2 py-2 px-8 uppercase rounded-lg hover:text-gray-500 hover:bg-white hover:border-white font-(--weight-regular) cursor-pointer transition-all duration-300 hover:scale-110
+    disabled:hover:text-white disabled:hover:bg-transparent disabled:cursor-not-allowed disabled:scale-100">
+    Rules
+  </button>
+
+  <div class="rulesPannel fixed inset-0 items-center justify-center z-50 hidden">
+    <div class="absolute inset-0 bg-black opacity-65"></div>
+    <div class="relative md:h-auto h-full w-sm px-8 py-6 bg-white rounded-sm z-10 flex flex-col justify-center">
+      <div class="rulesHead text-gray-500 flex justify-between items-center text-3xl">
+        <h1 class="uppercase font-(--weight-regular)">Rules</h1>
+        <button class="close-rules-btn rounded-full hover:bg-gray-200 cursor-pointer p-3 transition-all duration-300">
+          <img src="./images/icon-close.svg" alt="" class="h-5 w-5">
+        </button>
+      </div>
+      <img src="./images/image-rules.svg" alt="" class="mt-8 md:h-full h-auto w-full">
+    </div>
+  </div>
+
+  <script src="index.js"></script>
+</body>
+
+</html>
